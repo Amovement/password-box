@@ -1,0 +1,15 @@
+[app]
+port = 5233
+
+[mysql]
+addr = 'localhost:3306'
+user = 'root'
+password = '__REPLACE_THIS_WITH_YOUR_MYSQL_PASSWORD__'
+dbname = ''
+
+[redis]
+addr = 'localhost:6379'
+db = 0
+prefix = 'turingstar'
+#password = ''
+

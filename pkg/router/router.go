@@ -8,13 +8,17 @@ import (
 	"github.com/Amovement/password-box/pkg/config"
 	"github.com/Amovement/password-box/pkg/router/middlewares"
 	"github.com/Amovement/password-box/pkg/router/register"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
 func initMiddleware(r *gin.Engine) {
+	cfg := config.GetConfig()
+	store := cookie.NewStore([]byte(cfg.App.Session_key))
 	log := middlewares.GetLog()
 	//跨域中间件
-	r.Use(middlewares.Logger(log), middlewares.Cors, gin.Recovery())
+	r.Use(sessions.Sessions("pwdbox_session", store), middlewares.Logger(log), middlewares.Cors, gin.Recovery())
 }
 
 func SetupRouterAndGetServer() *http.Server {

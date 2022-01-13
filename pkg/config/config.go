@@ -2,16 +2,14 @@ package config
 
 type Config struct {
 	App struct {
-		Mode            string `default:"production"`
-		Port            uint16 `default:"50051"`
-		Oauth_Login_Url string `default:"localhost"`
-		Wechat_port     uint16 `default:"80"`
+		Port        uint16 `default:"50051"`
+		Session_key string `default:"pwdkey"`
 	}
 	MySQL struct {
 		Addr     string `default:"localhost:3306"`
 		User     string `default:"root"`
 		Password string `default:"12345678"`
-		DBName   string `default:"turingstar"`
+		DBName   string `default:"pwdbox"`
 	}
 	Redis struct {
 		Addr     string `default:"localhost:6379"`
